@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Contact | Links AI"
+  description="Get in touch with Links AI. Book an exploratory call or request more information."
+>
+  <section class="hero" slot="hero">
+    <h1>Get in touch</h1>
+    <p>
+      Tell us about your business. We'll tell you where to start.
+    </p>
+  </section>
+
+  <section class="cta-box" id="contact">
+    <h2>Ready to see what AI can do for your business?</h2>
+    <p>We'll reach out directly. No spam.</p>
+    <form class="lead-form" id="lead-form">
+      <label class="sr-only" for="lead-name">Name</label>
+      <input
+        id="lead-name"
+        name="name"
+        type="text"
+        placeholder="Your name"
+        autocomplete="name"
+        required
+      />
+      <label class="sr-only" for="lead-email">Email</label>
+      <input
+        id="lead-email"
+        name="email"
+        type="email"
+        placeholder="Your email"
+        autocomplete="email"
+        required
+      />
+      <button class="btn" type="submit">Request a call</button>
+    </form>
+    <p class="form-note">We'll reach out directly. No spam.</p>
+    <p class="form-status" id="form-status" aria-live="polite"></p>
+  </section>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>('#lead-form');
+    const statusEl = document.querySelector<HTMLParagraphElement>('#form-status');
+
+    if (form && statusEl) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const payload = {
+          name: String(formData.get('name') || '').trim(),
+          email: String(formData.get('email') || '').trim(),
+        };
+
+        statusEl.textContent = 'Sending...';
+        statusEl.className = 'form-status';
+
+        try {
+          const response = await fetch('/api/leads', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error((result as { error?: string }).error || 'Something went wrong.');
+          }
+
+          form.reset();
+          statusEl.textContent = 'Thanks. We got it and will reach out soon.';
+          statusEl.className = 'form-status is-success';
+        } catch (error) {
+          statusEl.textContent =
+            error instanceof Error
+              ? error.message
+              : 'Something went wrong. Please try again.';
+          statusEl.className = 'form-status is-error';
+        }
+      });
+    }
+  </script>
+</BaseLayout>

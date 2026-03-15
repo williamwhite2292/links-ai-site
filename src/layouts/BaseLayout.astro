@@ -1,0 +1,113 @@
+---
+import '../styles/global.css';
+
+const SITE = 'https://linksaisolutions.com';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { title, description = "Links AI helps businesses implement AI. From simple automations to full AI-powered operations.", canonical, ogImage, noindex = false } = Astro.props;
+
+const canonicalUrl = canonical ?? `${SITE}${Astro.url.pathname}`;
+const ogImageUrl = ogImage ?? `${SITE}/og-default.png`;
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Links AI',
+  url: SITE,
+  description: 'AI implementation for service businesses. From simple automations to full AI-powered operations.',
+  email: 'will@linksaisolutions.com',
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Links AI" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Analytics: set PUBLIC_GA_ID in env and uncomment when ready
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+    <script define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
+      if (gaId) { window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', gaId); }
+    </script>
+    -->
+  </head>
+  <body>
+    <div class="hero-bg">
+      <div class="wrap">
+        <header>
+          <div class="brand">
+            <a href="/">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <rect width="28" height="28" rx="6" fill="#2563eb"/>
+                <path d="M8 20V8h3v9h6v3H8z" fill="#fff"/>
+              </svg>
+              Links AI
+            </a>
+          </div>
+          <nav class="nav-links">
+            <a class="nav-link" href="/how-it-works">How it works</a>
+            <a class="nav-link" href="/services">Services</a>
+            <a class="nav-link" href="/insights">Insights</a>
+            <a class="nav-link" href="/contact">Get in touch</a>
+          </nav>
+        </header>
+
+        <slot name="hero" />
+      </div>
+    </div>
+
+    <div class="wrap">
+      <main>
+        <slot />
+      </main>
+
+      <footer>
+        <div class="footer-main">
+          <div class="footer-brand">
+            <a href="/">
+              <svg width="20" height="20" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <rect width="28" height="28" rx="6" fill="#2563eb"/>
+                <path d="M8 20V8h3v9h6v3H8z" fill="#fff"/>
+              </svg>
+              <span>Links AI</span>
+            </a>
+          </div>
+          <p class="footer-bio">
+            Founded by <strong>Will</strong>. Based in <strong>Denver</strong>.
+            <br/>AI implementation for service businesses.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a class="footer-link" href="mailto:will@linksaisolutions.com">will@linksaisolutions.com</a>
+          <span class="footer-copy">&copy; 2026 Links AI</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => data.draft !== true))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<BaseLayout
+  title="Insights | Links AI"
+  description="Practical insights on AI implementation, workflow automation, and building AI systems for service businesses."
+>
+  <section class="hero" slot="hero">
+    <h1>Insights</h1>
+    <p>
+      How we think about AI implementation and what we're learning from real workflows.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Blog &amp; articles</h2>
+    {posts.length > 0 ? (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="card" style="list-style: none;">
+            <a href={`/insights/${post.slug}`} style="text-decoration: none; color: inherit;">
+              <h3 style="margin: 0 0 8px;">{post.data.title}</h3>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-sub);">
+                {post.data.description}
+              </p>
+              <time datetime={post.data.pubDate.toISOString()} style="font-size: 0.85rem; color: var(--text-sub);">
+                {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>No posts yet. Check back soon or <a href="/contact" class="footer-link">get in touch</a> to start a conversation.</p>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .post-list {
+    display: grid;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+  }
+</style>
