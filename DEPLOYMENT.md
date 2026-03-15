@@ -1,12 +1,14 @@
 # Deployment Path (Links AI Site)
 
-**Status:** Pending GitHub repo creation  
+**Status:** GitHub repo created ✓  
 **Created:** 2026-03-15  
+**Updated:** 2026-03-15  
 **Owner:** Carl (Engineering)
 
 ## Current State
 
 - Site workspace: `/home/ubuntu/.openclaw/workspace/links-ai-site`
+- GitHub repo: https://github.com/willag-trey/links-ai-site
 - Framework: Astro 4.16.0
 - Build output: `dist/` (static files)
 - Domain: `linksaisolutions.com`
@@ -62,11 +64,18 @@
 
 ## Recommended Next Steps
 
-1. **Complete GitHub auth** (Rico/Trey) to create `links-ai-site` repo
+1. ~~**Complete GitHub auth** (Rico/Trey) to create `links-ai-site` repo~~ ✓ Done
 2. **Choose platform:** Vercel (fastest setup) or Cloudflare Pages (best performance)
 3. **Configure DNS:** Point `linksaisolutions.com` to chosen platform
 4. **Set up branch protection:** Require PRs for main branch
 5. **Add deploy hooks:** Optional - trigger rebuild from Paperclip on content approval
+
+## Repository
+
+- **URL:** https://github.com/willag-trey/links-ai-site
+- **Local:** `/home/ubuntu/.openclaw/workspace/links-ai-site`
+- **Remote:** `origin` → `https://github.com/willag-trey/links-ai-site.git`
+- **Default branch:** `main`
 
 ## Environment Variables
 
