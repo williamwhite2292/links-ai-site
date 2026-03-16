@@ -9,9 +9,10 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   noindex?: boolean;
+  pageClass?: string;
 }
 
-const { title, description = "Links AI helps businesses implement AI. From simple automations to full AI-powered operations.", canonical, ogImage, noindex = false } = Astro.props;
+const { title, description = "Links AI helps businesses implement AI. From simple automations to full AI-powered operations.", canonical, ogImage, noindex = false, pageClass = 'page-default' } = Astro.props;
 
 const canonicalUrl = canonical ?? `${SITE}${Astro.url.pathname}`;
 const ogImageUrl = ogImage ?? `${SITE}/og-default.png`;
@@ -57,7 +58,7 @@ const organizationJsonLd = {
     </script>
     -->
   </head>
-  <body>
+  <body class={pageClass}>
     <div class="hero-bg">
       <div class="wrap">
         <header>

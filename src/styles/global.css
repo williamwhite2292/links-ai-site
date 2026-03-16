@@ -343,6 +343,66 @@ footer {
   margin-top: 4px;
 }
 
+body.page-home .hero-bg {
+  background:
+    radial-gradient(ellipse at 18% 45%, rgba(37, 99, 235, 0.12) 0%, transparent 58%),
+    radial-gradient(ellipse at 82% 20%, rgba(59, 130, 246, 0.09) 0%, transparent 46%),
+    linear-gradient(180deg, #eff6ff 0%, var(--bg-white) 100%);
+}
+
+body.page-how-it-works .hero-bg {
+  background:
+    radial-gradient(ellipse at 22% 38%, rgba(14, 165, 233, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 18%, rgba(37, 99, 235, 0.05) 0%, transparent 48%),
+    linear-gradient(180deg, #f0f9ff 0%, var(--bg-white) 100%);
+}
+
+body.page-services .hero-bg {
+  background:
+    radial-gradient(ellipse at 20% 42%, rgba(99, 102, 241, 0.11) 0%, transparent 56%),
+    radial-gradient(ellipse at 78% 22%, rgba(79, 70, 229, 0.06) 0%, transparent 45%),
+    linear-gradient(180deg, #eef2ff 0%, var(--bg-white) 100%);
+}
+
+body.page-insights .hero-bg {
+  background:
+    radial-gradient(ellipse at 20% 40%, rgba(16, 185, 129, 0.10) 0%, transparent 58%),
+    radial-gradient(ellipse at 82% 24%, rgba(37, 99, 235, 0.05) 0%, transparent 46%),
+    linear-gradient(180deg, #ecfdf5 0%, var(--bg-white) 100%);
+}
+
+body.page-contact .hero-bg {
+  background:
+    radial-gradient(ellipse at 22% 44%, rgba(245, 158, 11, 0.11) 0%, transparent 58%),
+    radial-gradient(ellipse at 80% 18%, rgba(37, 99, 235, 0.05) 0%, transparent 46%),
+    linear-gradient(180deg, #fffbeb 0%, var(--bg-white) 100%);
+}
+
+body.page-how-it-works .step,
+body.page-how-it-works .cta-box {
+  background: #f8fbff;
+}
+
+body.page-services .card,
+body.page-services .cta-box {
+  background: #f7f7ff;
+}
+
+body.page-insights .card,
+body.page-insights .cta-box {
+  background: #f3fbf7;
+}
+
+body.page-contact .cta-box {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+    #fffaf0;
+}
+
+body.page-article .hero p {
+  font-size: 1rem;
+}
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;

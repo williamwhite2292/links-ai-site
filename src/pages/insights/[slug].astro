@@ -31,6 +31,7 @@ const articleJsonLd = {
   title={`${post.data.title} | Links AI`}
   description={post.data.description}
   canonical={canonicalUrl}
+  pageClass="page-insights page-article"
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <section class="hero" slot="hero">
