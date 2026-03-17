@@ -12,7 +12,7 @@ interface Props {
   pageClass?: string;
 }
 
-const { title, description = "Links AI helps businesses implement AI. From simple automations to full AI-powered operations.", canonical, ogImage, noindex = false, pageClass = 'page-default' } = Astro.props;
+const { title, description = "Links AI helps service businesses implement practical AI systems inside their real operations.", canonical, ogImage, noindex = false, pageClass = 'page-default' } = Astro.props;
 
 const canonicalUrl = canonical ?? `${SITE}${Astro.url.pathname}`;
 const ogImageUrl = ogImage ?? `${SITE}/og-default.png`;
@@ -21,7 +21,7 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: 'Links AI',
   url: SITE,
-  description: 'AI implementation for service businesses. From simple automations to full AI-powered operations.',
+  description: 'AI implementation for service businesses focused on practical operational workflows.',
   email: 'will@linksaisolutions.com',
 };
 ---
@@ -74,7 +74,6 @@ const organizationJsonLd = {
           <nav class="nav-links">
             <a class="nav-link" href="/">Home</a>
             <a class="nav-link" href="/how-it-works">How it works</a>
-            <a class="nav-link" href="/services">Services</a>
             <a class="nav-link" href="/insights">Insights</a>
             <a class="nav-link" href="/contact">Get in touch</a>
           </nav>
